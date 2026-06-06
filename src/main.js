@@ -349,11 +349,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Discount Banner Close
   const closePromoBtn = document.getElementById('close-promo-btn')
   const promoBanner = document.getElementById('promo-banner')
+  const mainNav = document.querySelector('nav')
+  const body = document.body
   
   if (closePromoBtn && promoBanner) {
     closePromoBtn.addEventListener('click', () => {
       promoBanner.classList.add('hidden')
-      document.body.classList.remove('pt-8') // adjust custom layout padding if any
+      // Reposition navigation bar to the top of screen
+      if (mainNav) {
+        mainNav.classList.remove('top-[32px]', 'md:top-[40px]')
+        mainNav.classList.add('top-0')
+      }
+      // Reposition body padding to account for navigation height (h-20 = 80px = pt-20)
+      if (body) {
+        body.classList.remove('pt-[104px]', 'md:pt-[112px]')
+        body.classList.add('pt-20')
+      }
     })
   }
 
