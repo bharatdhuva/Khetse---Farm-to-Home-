@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html class="scroll-smooth font-sans" lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -9,111 +9,182 @@
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Be+Vietnam+Pro:wght@400;600&amp;display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;display=swap"
     rel="stylesheet" />
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet" />
 </head>
 
-<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden pt-[104px] md:pt-[112px]">
+
+  <!-- Top Promo discount banner -->
+  <div id="promo-banner" class="fixed top-0 left-0 w-full bg-[#8dc63f] text-[#1a5319] py-2 px-4 text-center text-[10px] md:text-xs font-bold flex items-center justify-center gap-2 z-[60] shadow-sm">
+    <span>🎉 Get 10% Off on your first order! Use code: <span class="bg-white/40 px-1.5 py-0.5 rounded select-all font-mono tracking-wider">FIRST10</span></span>
+    <button id="close-promo-btn" class="hover:bg-white/20 p-0.5 rounded-full transition-colors leading-none ml-2">
+      <span class="material-symbols-outlined text-sm">close</span>
+    </button>
+  </div>
+
   <!-- Top Navigation -->
-  <nav
-    class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-outline-variant/30 flex items-center justify-between px-container-margin h-16">
-    <div class="flex items-center">
-      <img alt="KhetSe Logo" class="h-15 object-contain" src="/logo.png" />
+  <nav class="fixed top-[32px] md:top-[40px] w-full z-50 bg-white/95 backdrop-blur-md border-b border-outline-variant/30 flex items-center justify-between px-container-margin h-20">
+    <div class="flex items-center gap-8">
+      <a href="#" class="flex items-center">
+        <img alt="KhetSe Logo" class="h-14 md:h-16 object-contain" src="/logo.png" />
+      </a>
+      <!-- Desktop menu links -->
+      <div class="hidden lg:flex items-center gap-6">
+        <a class="text-sm font-semibold hover:text-primary transition-colors text-on-surface" href="#">Home</a>
+        <a class="text-sm font-semibold hover:text-primary transition-colors text-on-surface-variant" href="#categories">Categories</a>
+        <a class="text-sm font-semibold hover:text-primary transition-colors text-on-surface-variant" href="#farmers">Farmers</a>
+        <a class="text-sm font-semibold hover:text-primary transition-colors text-on-surface-variant" href="#subscriptions">Subscription Plans</a>
+        <a class="text-sm font-semibold hover:text-primary transition-colors text-on-surface-variant" href="#about">About Us</a>
+        <a class="text-sm font-semibold hover:text-primary transition-colors text-on-surface-variant" href="#contact">Contact</a>
+      </div>
     </div>
-    <div class="flex items-center gap-2">
-      <button
-        class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors active:scale-95">
-        <span class="material-symbols-outlined" data-icon="search">search</span>
-      </button>
-      <button
-        class="bg-primary text-on-primary px-5 py-2 rounded-full font-label-md hover:opacity-90 transition-all active:scale-95 shadow-sm">
-        Login
+    <div class="flex items-center gap-4">
+      <!-- Cart Icon -->
+      <a href="#download-section" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+        <span class="material-symbols-outlined text-2xl" data-icon="shopping_cart">shopping_cart</span>
+        <span class="absolute top-0 right-0 bg-primary text-on-primary text-[8px] w-4 h-4 flex items-center justify-center rounded-full font-bold">2</span>
+      </a>
+      <a href="#download-section" class="hidden sm:inline-block bg-primary text-on-primary px-5 py-2.5 rounded-full font-label-md hover:bg-primary-container transition-all active:scale-95 shadow-sm text-sm font-bold">
+        Download App
+      </a>
+      <!-- Mobile hamburger menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-on-surface-variant hover:bg-surface-container rounded-full active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-2xl">menu</span>
       </button>
     </div>
   </nav>
-  <main class="pt-16">
+
+  <!-- Mobile Drawer Backdrop -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity"></div>
+  
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-[280px] bg-white z-[60] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between border-b border-outline-variant/30 pb-4 mb-6">
+        <img alt="KhetSe Logo" class="h-10 object-contain" src="/logo.png" />
+        <button id="mobile-menu-close-btn" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="flex flex-col gap-4 text-base font-semibold">
+        <a class="hover:text-primary transition-colors py-2 text-on-surface" href="#">Home</a>
+        <a class="hover:text-primary transition-colors py-2 text-on-surface-variant" href="#categories">Categories</a>
+        <a class="hover:text-primary transition-colors py-2 text-on-surface-variant" href="#farmers">Farmers</a>
+        <a class="hover:text-primary transition-colors py-2 text-on-surface-variant" href="#subscriptions">Subscription Plans</a>
+        <a class="hover:text-primary transition-colors py-2 text-on-surface-variant" href="#about">About Us</a>
+        <a class="hover:text-primary transition-colors py-2 text-on-surface-variant" href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-outline-variant/30 space-y-4">
+      <a href="#download-section" class="w-full block text-center bg-primary text-on-primary py-3 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all shadow-md">
+        Download App
+      </a>
+      <p class="text-[10px] text-center text-on-surface-variant">Kyunki sehat aur bharosa, dono zaroori hain.</p>
+    </div>
+  </div>
+
+  <main>
     <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-surface py-stack-lg md:py-24 organic-bg">
-      <div
-        class="container mx-auto px-container-margin grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:items-start relative z-10">
-        <div class="space-y-6 md:pt-10">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#8dc63f]/20 text-primary rounded-full">
-            <span class="material-symbols-outlined text-sm" data-icon="eco"
-              style="font-variation-settings: 'FILL' 1;">eco</span>
-            <span class="text-[10px] font-label-md uppercase tracking-widest">Directly From Local Farms</span>
+    <section class="relative overflow-hidden bg-surface py-16 md:py-24 organic-bg">
+      <div class="container mx-auto px-container-margin grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <!-- Left Side Column -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#8dc63f]/20 text-primary rounded-full border border-[#8dc63f]/30">
+            <span class="material-symbols-outlined text-base" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider">Directly From Local Farms</span>
           </div>
-          <h1 class="font-display-lg text-display-lg md:text-6xl text-on-surface leading-tight">
+          <h1 class="font-display-lg text-display-lg text-4xl sm:text-5xl md:text-6xl text-on-surface leading-[1.1] font-extrabold tracking-tight">
             Direct from Farmers, <br /> <span class="text-primary italic font-serif">Fresh for Your Family.</span>
           </h1>
-          <p class="text-body-lg text-on-surface-variant max-w-lg">
-            Experience the vitality of harvest-day produce. We bridge the gap between India's heritage farming and your
-            modern kitchen.
+          <p class="text-body-lg text-on-surface-variant text-base md:text-lg max-w-xl leading-relaxed">
+            Experience the vitality of harvest-day produce. We bridge the gap between India's heritage farming and your modern kitchen, delivering nutritious staples in under 12 hours.
           </p>
-          <div class="flex flex-wrap gap-4 pt-4">
+          
+          <!-- Call to Action Buttons -->
+          <div class="flex flex-wrap gap-4 pt-2">
             <a href="#download-section"
-              class="bg-primary text-on-primary px-8 py-4 rounded-2xl font-label-md hover:bg-primary-container transition-all active:scale-95 flex items-center gap-2 shadow-lg">
+              class="bg-primary text-on-primary px-8 py-4 rounded-2xl font-semibold hover:bg-primary-container transition-all active:scale-95 flex items-center gap-2 shadow-lg hover:shadow-primary/25">
               <span class="material-symbols-outlined" data-icon="download">download</span>
               Download App
             </a>
+            <a href="#categories"
+              class="bg-white text-on-surface border border-outline-variant/60 px-8 py-4 rounded-2xl font-semibold hover:bg-surface-container transition-all active:scale-95 flex items-center gap-2 shadow-sm">
+              <span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+              Explore Fresh Food
+            </a>
           </div>
-          <!-- Flow Diagram from the Mockup -->
-          <div class="grid grid-cols-2 md:flex md:flex-wrap items-center gap-x-6 gap-y-4 pt-8 border-t border-outline-variant/30 mt-8">
+
+          <!-- Trust Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-outline-variant/30 mt-8">
             <div class="flex items-center gap-2">
-              <div class="w-8 h-8 md:w-9 md:h-9 shrink-0 rounded-full bg-[#d0f1c3] text-primary flex items-center justify-center shadow-sm">
-                <span class="material-symbols-outlined text-sm md:text-base font-semibold" data-icon="agriculture">agriculture</span>
-              </div>
-              <span class="text-[10px] md:text-xs font-semibold text-on-surface">Direct from Farmers</span>
+              <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+              <span class="text-[11px] font-bold text-on-surface">Farm Fresh</span>
             </div>
-            <span class="text-outline-variant text-sm font-bold hidden md:inline">→</span>
             <div class="flex items-center gap-2">
-              <div class="w-8 h-8 md:w-9 md:h-9 shrink-0 rounded-full bg-[#ffdbcf] text-secondary flex items-center justify-center shadow-sm">
-                <span class="material-symbols-outlined text-sm md:text-base font-semibold" data-icon="eco">eco</span>
-              </div>
-              <span class="text-[10px] md:text-xs font-semibold text-on-surface">100% Fresh & Natural</span>
+              <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+              <span class="text-[11px] font-bold text-on-surface">Same Day Delivery</span>
             </div>
-            <span class="text-outline-variant text-sm font-bold hidden md:inline">→</span>
             <div class="flex items-center gap-2">
-              <div class="w-8 h-8 md:w-9 md:h-9 shrink-0 rounded-full bg-[#ffdcc2] text-tertiary flex items-center justify-center shadow-sm">
-                <span class="material-symbols-outlined text-sm md:text-base font-semibold" data-icon="home">home</span>
-              </div>
-              <span class="text-[10px] md:text-xs font-semibold text-on-surface">Delivered to Home</span>
+              <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
+              <span class="text-[11px] font-bold text-on-surface">No Middlemen</span>
             </div>
-            <span class="text-outline-variant text-sm font-bold hidden md:inline">→</span>
             <div class="flex items-center gap-2">
-              <div class="w-8 h-8 md:w-9 md:h-9 shrink-0 rounded-full bg-primary/10 text-primary flex items-center justify-center shadow-sm">
-                <span class="material-symbols-outlined text-sm md:text-base font-semibold" data-icon="verified">verified</span>
-              </div>
-              <span class="text-[10px] md:text-xs font-semibold text-on-surface">Safe, Trusted & Reliable</span>
+              <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">person_pin</span>
+              <span class="text-[11px] font-bold text-on-surface">Direct From Farmers</span>
             </div>
-          </div></div>
+          </div>
+
+          <!-- Hero Stats -->
+          <div class="grid grid-cols-4 gap-4 bg-white/70 backdrop-blur p-4 rounded-2xl shadow-sm border border-outline-variant/20 mt-6 text-center">
+            <div>
+              <p class="text-lg md:text-xl font-extrabold text-primary">50k+</p>
+              <p class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">Customers</p>
+            </div>
+            <div>
+              <p class="text-lg md:text-xl font-extrabold text-primary">2k+</p>
+              <p class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">Farmers</p>
+            </div>
+            <div>
+              <p class="text-lg md:text-xl font-extrabold text-primary">15+</p>
+              <p class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">Cities</p>
+            </div>
+            <div>
+              <p class="text-lg md:text-xl font-extrabold text-primary">4.9★</p>
+              <p class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">App Rating</p>
+            </div>
+          </div>
         </div>
-        <div class="relative">
-          <div class="aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl relative border-8 border-white">
-            <img class="w-full h-full object-cover"
-              data-alt="A lush and vibrant collection of fresh Indian farm vegetables including bright green spinach, ripe red tomatoes, and earthy carrots arranged artistically on a rustic wooden table. The lighting is bright and natural, suggesting an early morning harvest at a traditional farm in rural India. The overall mood is fresh, organic, and trustworthy, with a soft daylight glow illuminating the textures of the produce."
-              src="/hero.jpg" />
-            <div
-              class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl flex items-center justify-between shadow-xl">
+
+        <!-- Right Side visual container (Phone Mockup + Farmer Image Stack) -->
+        <div class="lg:col-span-6 relative flex items-center justify-center">
+          <div class="relative w-full max-w-md md:max-w-lg aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-white group hover:shadow-primary/10 transition-all duration-500">
+            <img class="w-full h-full object-cover select-none animate-float-1" src="/app_showcase.png" alt="Khetse farmer and app mockup display" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+            
+            <!-- Floating overlay rating -->
+            <div class="absolute bottom-6 left-6 bg-white/95 backdrop-blur p-4 rounded-2xl flex items-center justify-between shadow-xl border border-outline-variant/30 w-[calc(100%-3rem)] max-w-sm">
               <div>
-                <p class="text-primary font-bold text-sm">Empowering Farmers.</p>
-                <p class="text-on-surface-variant text-xs">Enriching Lives.</p>
+                <p class="text-primary font-extrabold text-sm tracking-wide">Empowering Farmers.</p>
+                <p class="text-on-surface-variant text-xs font-medium">Enriching Lives.</p>
               </div>
-              <span class="material-symbols-outlined text-[#8dc63f] text-4xl" data-icon="verified"
-                style="font-variation-settings: 'FILL' 1;">verified</span>
+              <span class="material-symbols-outlined text-[#8dc63f] text-4xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
             </div>
           </div>
-          <!-- Decorative floating element -->
-          <div
-            class="absolute -top-6 -right-6 w-28 h-28 bg-[#ffdcc2] rounded-full flex items-center justify-center p-4 text-center shadow-lg transform rotate-12">
-            <p class="font-price-tag text-[#2e1500] text-xs leading-tight">Save up to 30%</p>
+          <!-- Decorative floating percentage bubble -->
+          <div class="absolute -top-6 -right-4 w-28 h-28 bg-[#ffdcc2] rounded-full flex flex-col items-center justify-center p-4 text-center shadow-lg transform rotate-12 animate-float-2 border-4 border-white select-none">
+            <p class="text-[9px] font-extrabold uppercase tracking-wider text-[#2e1500]/60">Save up to</p>
+            <p class="font-price-tag text-[#2e1500] text-2xl font-extrabold">30%</p>
+            <p class="text-[9px] font-extrabold uppercase tracking-wider text-[#2e1500]/60">On Groceries</p>
           </div>
         </div>
       </div>
     </section>
-    <!-- Features Banner -->
+
+    <!-- Features Banner (Green Stripe) -->
     <div class="bg-[#1a5319] text-white py-8 border-y border-white/10 relative z-20">
       <div class="container mx-auto px-container-margin grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-center">
         <div class="flex items-center gap-3">
@@ -154,323 +225,1174 @@
         </div>
       </div>
     </div>
-    <!-- How It Works Section -->
-    <section class="py-stack-lg md:py-32 bg-surface-container-low">
+
+    <!-- Product Categories Section -->
+    <section id="categories" class="py-16 md:py-28 bg-surface">
       <div class="container mx-auto px-container-margin">
-        <div class="text-center mb-16">
-          <h2 class="font-headline-lg text-headline-lg md:text-5xl text-on-surface mb-4">How it Works</h2>
-          <p class="text-on-surface-variant font-body-md">From farm to table in three simple steps</p>
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <h2 class="font-headline-lg text-3xl md:text-4xl lg:text-5xl text-on-surface mb-4 font-bold">Everything Fresh, Direct From Farms</h2>
+          <p class="text-on-surface-variant font-medium text-sm md:text-base">Shop from our carefully curated handpicked categories harvested daily.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <!-- Category 1 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between h-72">
+            <div class="aspect-square w-full rounded-2xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=400&q=80" alt="Fresh Vegetables" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 class="font-bold text-on-surface text-sm leading-tight">Vegetables</h3>
+              <p class="text-on-surface-variant text-[11px] mt-0.5">50+ Items Available</p>
+            </div>
+            <a href="#download-section" class="mt-3 w-full bg-primary/10 hover:bg-primary hover:text-on-primary text-primary py-2 rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1 group">
+              Explore <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between h-72">
+            <div class="aspect-square w-full rounded-2xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&w=400&q=80" alt="Fresh Fruits" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 class="font-bold text-on-surface text-sm leading-tight">Fruits</h3>
+              <p class="text-on-surface-variant text-[11px] mt-0.5">30+ Items Available</p>
+            </div>
+            <a href="#download-section" class="mt-3 w-full bg-primary/10 hover:bg-primary hover:text-on-primary text-primary py-2 rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1 group">
+              Explore <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between h-72">
+            <div class="aspect-square w-full rounded-2xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1527018601619-a508a2be00cd?auto=format&fit=crop&w=400&q=80" alt="Dairy Products" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 class="font-bold text-on-surface text-sm leading-tight">Dairy Products</h3>
+              <p class="text-on-surface-variant text-[11px] mt-0.5">25+ Items Available</p>
+            </div>
+            <a href="#download-section" class="mt-3 w-full bg-primary/10 hover:bg-primary hover:text-on-primary text-primary py-2 rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1 group">
+              Explore <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between h-72">
+            <div class="aspect-square w-full rounded-2xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=400&q=80" alt="Grains & Pulses" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 class="font-bold text-on-surface text-sm leading-tight">Grains & Pulses</h3>
+              <p class="text-on-surface-variant text-[11px] mt-0.5">40+ Items Available</p>
+            </div>
+            <a href="#download-section" class="mt-3 w-full bg-primary/10 hover:bg-primary hover:text-on-primary text-primary py-2 rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1 group">
+              Explore <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Category 5 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between h-72">
+            <div class="aspect-square w-full rounded-2xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80" alt="Organic Products" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 class="font-bold text-on-surface text-sm leading-tight">Organic Products</h3>
+              <p class="text-on-surface-variant text-[11px] mt-0.5">15+ Items Available</p>
+            </div>
+            <a href="#download-section" class="mt-3 w-full bg-primary/10 hover:bg-primary hover:text-on-primary text-primary py-2 rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1 group">
+              Explore <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Category 6 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between h-72">
+            <div class="aspect-square w-full rounded-2xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1516448620398-c5f44bf9f441?auto=format&fit=crop&w=400&q=80" alt="Eggs & Poultry" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 class="font-bold text-on-surface text-sm leading-tight">Eggs & Poultry</h3>
+              <p class="text-on-surface-variant text-[11px] mt-0.5">10+ Items Available</p>
+            </div>
+            <a href="#download-section" class="mt-3 w-full bg-primary/10 hover:bg-primary hover:text-on-primary text-primary py-2 rounded-xl text-center text-xs font-bold transition-all flex items-center justify-center gap-1 group">
+              Explore <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Interactive Screenshots Section -->
+    <section class="py-16 md:py-28 bg-[#f1f4e8]">
+      <div class="container mx-auto px-container-margin grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Content and Tabs column -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#1a5319]/10 text-primary rounded-full">
+            <span class="material-symbols-outlined text-base">smartphone</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider">Interactive App Preview</span>
+          </div>
+          <h2 class="font-headline-lg text-3xl md:text-4xl lg:text-5xl text-on-surface font-extrabold leading-tight">
+            Experience KhetSe <br />on Mobile
+          </h2>
+          <p class="text-on-surface-variant text-base">
+            Select tabs to preview live screens inside our mobile application. Get the convenience of farm-fresh staples customized just for you.
+          </p>
+
+          <!-- App Screenshot Tabs -->
+          <div class="flex flex-col gap-2 pt-4">
+            <button data-screen="home" class="app-screenshot-tab flex items-center justify-between p-3.5 rounded-xl border border-outline-variant/30 text-left font-bold text-xs hover:bg-[#1a5319]/5 transition-all bg-[#1a5319] text-white">
+              <span class="flex items-center gap-3"><span class="material-symbols-outlined text-base">home</span>Home Screen</span>
+              <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+            </button>
+            <button data-screen="listing" class="app-screenshot-tab flex items-center justify-between p-3.5 rounded-xl border border-outline-variant/30 text-left font-bold text-xs hover:bg-[#1a5319]/5 transition-all bg-white text-on-surface-variant">
+              <span class="flex items-center gap-3"><span class="material-symbols-outlined text-base">grid_view</span>Product Listing</span>
+              <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+            </button>
+            <button data-screen="cart" class="app-screenshot-tab flex items-center justify-between p-3.5 rounded-xl border border-outline-variant/30 text-left font-bold text-xs hover:bg-[#1a5319]/5 transition-all bg-white text-on-surface-variant">
+              <span class="flex items-center gap-3"><span class="material-symbols-outlined text-base">shopping_cart</span>Shopping Cart</span>
+              <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+            </button>
+            <button data-screen="subscription" class="app-screenshot-tab flex items-center justify-between p-3.5 rounded-xl border border-outline-variant/30 text-left font-bold text-xs hover:bg-[#1a5319]/5 transition-all bg-white text-on-surface-variant">
+              <span class="flex items-center gap-3"><span class="material-symbols-outlined text-base">calendar_month</span>Subscription Screen</span>
+              <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+            </button>
+            <button data-screen="tracking" class="app-screenshot-tab flex items-center justify-between p-3.5 rounded-xl border border-outline-variant/30 text-left font-bold text-xs hover:bg-[#1a5319]/5 transition-all bg-white text-on-surface-variant">
+              <span class="flex items-center gap-3"><span class="material-symbols-outlined text-base">local_shipping</span>Live Order Tracking</span>
+              <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+            </button>
+          </div>
+
+          <!-- Download Badges -->
+          <div class="flex flex-wrap gap-4 pt-6 border-t border-outline-variant/30">
+            <a href="#download-section" class="hover:scale-105 transition-all duration-200">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="h-11 shadow-md rounded-lg" />
+            </a>
+            <a href="#download-section" class="hover:scale-105 transition-all duration-200">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" class="h-11 shadow-md rounded-lg" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone display frame mockup column -->
+        <div class="lg:col-span-6 flex justify-center">
+          <div class="relative w-[300px] h-[610px] bg-slate-900 rounded-[3rem] p-3 shadow-2xl border-4 border-slate-800">
+            <!-- Notch -->
+            <div class="absolute top-4 left-1/2 -translate-x-1/2 w-36 h-4 bg-slate-900 rounded-full z-30 flex items-center justify-center gap-2">
+              <span class="w-2.5 h-2.5 bg-black/60 rounded-full"></span>
+              <span class="w-1.5 h-1.5 bg-slate-800 rounded-full"></span>
+            </div>
+            <!-- Status Bar -->
+            <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[9px] text-slate-800 font-bold bg-[#fbfcf8] rounded-t-[2.2rem] z-20 relative">
+              <span>9:41</span>
+              <div class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[9px]">signal_cellular_alt</span>
+                <span class="material-symbols-outlined text-[9px]">wifi</span>
+                <span class="material-symbols-outlined text-[9px]">battery_full</span>
+              </div>
+            </div>
+            <!-- Screen Content Target -->
+            <div id="phone-screen-display" class="w-full h-[544px] overflow-hidden rounded-b-[2.2rem] border-t border-outline-variant/10 relative">
+              <!-- Dynamically populated by main.js -->
+            </div>
+            <!-- Bottom Home Indicator -->
+            <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-28 h-1 bg-slate-400 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Metrics Section -->
+    <section class="py-16 bg-[#1a5319] text-white">
+      <div class="container mx-auto px-container-margin text-center">
+        <h2 class="font-headline-lg text-2xl md:text-3xl lg:text-4xl mb-12 font-bold tracking-wide uppercase">Trusted By Thousands</h2>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <div class="space-y-1">
+            <p class="text-4xl md:text-5xl font-extrabold text-[#8dc63f]">50k+</p>
+            <p class="text-xs uppercase tracking-wider opacity-80 font-bold">Happy Families</p>
+          </div>
+          <div class="space-y-1">
+            <p class="text-4xl md:text-5xl font-extrabold text-[#8dc63f]">2k+</p>
+            <p class="text-xs uppercase tracking-wider opacity-80 font-bold">Partner Farmers</p>
+          </div>
+          <div class="space-y-1">
+            <p class="text-4xl md:text-5xl font-extrabold text-[#8dc63f]">15+</p>
+            <p class="text-xs uppercase tracking-wider opacity-80 font-bold">Cities Served</p>
+          </div>
+          <div class="space-y-1">
+            <p class="text-4xl md:text-5xl font-extrabold text-[#8dc63f]">1M+</p>
+            <p class="text-xs uppercase tracking-wider opacity-80 font-bold">Orders Delivered</p>
+          </div>
+          <div class="space-y-1 col-span-2 md:col-span-1">
+            <p class="text-4xl md:text-5xl font-extrabold text-[#8dc63f]">4.9★</p>
+            <p class="text-xs uppercase tracking-wider opacity-80 font-bold">Customer Rating</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet Our Farmers Section -->
+    <section id="farmers" class="py-16 md:py-28 bg-surface">
+      <div class="container mx-auto px-container-margin">
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <h2 class="font-headline-lg text-3xl md:text-4xl lg:text-5xl text-on-surface mb-4 font-bold">The Farmers Behind Your Food</h2>
+          <p class="text-on-surface-variant font-medium">Meet the farming pioneers putting direct fresh soil goodness on your dining table.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Farmer 1 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2.5rem] overflow-hidden hover-lift p-5 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="aspect-[4/3] rounded-3xl overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=500&q=80" alt="Rajesh Patel" class="w-full h-full object-cover" />
+                <div class="absolute top-4 left-4 bg-primary text-on-primary text-[10px] py-1 px-3 rounded-full font-bold uppercase">Organic Pioneer</div>
+              </div>
+              <div class="space-y-1">
+                <h3 class="font-bold text-xl text-on-surface">Rajesh Patel</h3>
+                <p class="text-xs text-primary font-bold">Junagadh, Gujarat • 20 Years Experience</p>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "KhetSe direct payout methods allowed me to implement organic bio-fertilizer techniques, improving crop quality and our household income."
+              </p>
+            </div>
+            <div class="border-t border-outline-variant/20 pt-4 mt-6 flex justify-between items-center text-xs text-on-surface-variant">
+              <span>Main Produce: <strong>Groundnut, Mango</strong></span>
+              <span class="material-symbols-outlined text-primary text-xl">verified</span>
+            </div>
+          </div>
+
+          <!-- Farmer 2 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2.5rem] overflow-hidden hover-lift p-5 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="aspect-[4/3] rounded-3xl overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=500&q=80" alt="Sunita Devi" class="w-full h-full object-cover" />
+                <div class="absolute top-4 left-4 bg-primary text-on-primary text-[10px] py-1 px-3 rounded-full font-bold uppercase">Women Lead Farm</div>
+              </div>
+              <div class="space-y-1">
+                <h3 class="font-bold text-xl text-on-surface">Sunita Devi</h3>
+                <p class="text-xs text-primary font-bold">Rajkot, Gujarat • 12 Years Experience</p>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "By avoiding local mandi middlemen commissions, our farm cooperative secures 30% extra margin which helps educate local children."
+              </p>
+            </div>
+            <div class="border-t border-outline-variant/20 pt-4 mt-6 flex justify-between items-center text-xs text-on-surface-variant">
+              <span>Main Produce: <strong>Vegetables, Milk</strong></span>
+              <span class="material-symbols-outlined text-primary text-xl">verified</span>
+            </div>
+          </div>
+
+          <!-- Farmer 3 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2.5rem] overflow-hidden hover-lift p-5 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="aspect-[4/3] rounded-3xl overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=500&q=80" alt="Harish Bhai" class="w-full h-full object-cover" />
+                <div class="absolute top-4 left-4 bg-primary text-on-primary text-[10px] py-1 px-3 rounded-full font-bold uppercase">Staple Specialist</div>
+              </div>
+              <div class="space-y-1">
+                <h3 class="font-bold text-xl text-on-surface">Harish Bhai</h3>
+                <p class="text-xs text-primary font-bold">Vadodara, Gujarat • 15 Years Experience</p>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "Harvesting starts at 4:00 AM, and our grains are picked up by KhetSe riders by 7:00 AM. Knowing families eat my crop fresh fills me with pride."
+              </p>
+            </div>
+            <div class="border-t border-outline-variant/20 pt-4 mt-6 flex justify-between items-center text-xs text-on-surface-variant">
+              <span>Main Produce: <strong>Pulses, Wheat</strong></span>
+              <span class="material-symbols-outlined text-primary text-xl">verified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Customers Love KhetSe -->
+    <section class="py-16 md:py-24 bg-surface-container-low">
+      <div class="container mx-auto px-container-margin">
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <h2 class="font-headline-lg text-3xl md:text-4xl text-on-surface mb-4 font-bold">Why Customers Love KhetSe</h2>
+          <p class="text-on-surface-variant font-medium text-sm md:text-base">We prioritize quality, freshness, and accessibility at every single touchpoint.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">eco</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Fresh Within Hours</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">No warehouse storage delays. Harvested early morning and delivered straight to your home.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">sell</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Better Prices</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">By omitting mandi brokers, we pass on the direct cost savings to families, keeping prices competitive.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">ac_unit</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">No Cold Storage</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Preservative-free and fresh. Cold storage degrades original nutrients; we deliver 100% vital foods.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">contact_support</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Direct Farmer Support</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Each product page features the farm details where it was grown, letting you support local communities directly.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Quality Checked</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Rigorous multi-point testing for pesticide residue and physical parameters before dispatch.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Same-Day Delivery</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Place order before 10 AM, and get fresh items delivered right in time for preparation of dinner.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Farmers Love KhetSe -->
+    <section class="py-16 md:py-24 bg-surface">
+      <div class="container mx-auto px-container-margin">
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <h2 class="font-headline-lg text-3xl md:text-4xl text-on-surface mb-4 font-bold">Why Farmers Love KhetSe</h2>
+          <p class="text-on-surface-variant font-medium text-sm md:text-base">Empowering Indian agriculture by providing modern digital pathways and fair wages.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Fair Pricing</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Farmers receive up to 35% higher prices for their harvest compared to regional mandi rates.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">group_add</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Direct Customers</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Access urban demand markets without having to transport crops to physical wholesale sites.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">speed</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Faster Payments</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Digital payouts processed in under 24 hours of crop collection, easing farmers' working capital flow.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">engineering</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">No Middlemen</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Say goodbye to commissions, agents, and hidden fees. Clean transparent digital accounting.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Better Profit Margins</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Increased profits enable farmers to invest in crop rotation, organic methods, and micro-irrigation.</p>
+          </div>
+          <div class="bg-white p-8 rounded-[2rem] hover-lift border border-outline-variant/20 shadow-sm">
+            <span class="material-symbols-outlined text-4xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">devices</span>
+            <h4 class="font-bold text-lg text-on-surface mb-2">Digital Marketplace</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Simple app tool allows local farmers to list harvest details and confirm collections easily.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscription Plans Section -->
+    <section id="subscriptions" class="py-16 md:py-28 bg-[#f8faef]">
+      <div class="container mx-auto px-container-margin">
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <span class="text-primary text-xs font-extrabold uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">Subscriptions</span>
+          <h2 class="font-headline-lg text-3xl md:text-4xl lg:text-5xl text-on-surface mt-4 mb-4 font-bold">Never Run Out of Essentials</h2>
+          <p class="text-on-surface-variant font-medium">Subscribe once and configure automated daily, bi-weekly, or weekly deliveries.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
+          <!-- Plan 1 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2.5rem] p-8 flex flex-col justify-between hover-lift shadow-sm">
+            <div class="space-y-6">
+              <div>
+                <p class="text-on-surface-variant text-xs font-bold uppercase tracking-wider">Morning Staples</p>
+                <h3 class="text-2xl font-extrabold text-on-surface mt-2">Essential Plan</h3>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-extrabold text-[#1a5319]">₹499</span>
+                <span class="text-on-surface-variant text-xs font-semibold">/month</span>
+              </div>
+              <p class="text-on-surface-variant text-sm leading-relaxed">Perfect for individuals wanting morning fresh cow milk and bread delivered daily before 7:00 AM.</p>
+              <ul class="space-y-3 text-xs text-on-surface-variant font-semibold">
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>Fresh Cow Milk (1 Ltr Daily)</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>Free morning slot delivery</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>Pause/Resume subscription</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>Save up to ₹150 in shipping</li>
+              </ul>
+            </div>
+            <a href="#download-section" class="mt-8 block text-center border-2 border-primary text-primary py-3 rounded-xl font-bold hover:bg-primary/5 transition-colors">
+              Subscribe Now
+            </a>
+          </div>
+
+          <!-- Plan 2 (Highlighted) -->
+          <div class="bg-white border-2 border-primary rounded-[2.5rem] p-8 flex flex-col justify-between hover-lift shadow-lg relative transform md:-translate-y-4">
+            <div class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-primary text-on-primary text-[10px] py-1 px-4 rounded-full font-bold uppercase tracking-wider">Recommended</div>
+            <div class="space-y-6">
+              <div>
+                <p class="text-primary text-xs font-extrabold uppercase tracking-wider">Happy Family staples</p>
+                <h3 class="text-2xl font-extrabold text-on-surface mt-2">Family Plan</h3>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-extrabold text-[#1a5319]">₹999</span>
+                <span class="text-on-surface-variant text-xs font-semibold">/month</span>
+              </div>
+              <p class="text-on-surface-variant text-sm leading-relaxed">Ideal for typical families. Daily morning fresh milk, organic fresh vegetables twice a week, and fresh seasonal fruits.</p>
+              <ul class="space-y-3 text-xs text-on-surface-variant font-semibold">
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Fresh Milk (2 Ltr Daily)</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Veg basket (4 kg, twice/week)</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Fresh Fruits (1.5 kg, weekly)</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>100% Free Daily morning delivery</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Save up to ₹400 in grocery budget</li>
+              </ul>
+            </div>
+            <a href="#download-section" class="mt-8 block text-center bg-primary text-on-primary py-3.5 rounded-xl font-bold hover:bg-primary-container transition-colors shadow-md">
+              Subscribe Now
+            </a>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2.5rem] p-8 flex flex-col justify-between hover-lift shadow-sm">
+            <div class="space-y-6">
+              <div>
+                <p class="text-on-surface-variant text-xs font-bold uppercase tracking-wider">Premium organic pantry</p>
+                <h3 class="text-2xl font-extrabold text-on-surface mt-2">Premium Plan</h3>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-extrabold text-[#1a5319]">₹1499</span>
+                <span class="text-on-surface-variant text-xs font-semibold">/month</span>
+              </div>
+              <p class="text-on-surface-variant text-sm leading-relaxed">Comprehensive pantry subscription. Organic A2 milk, premium veggies, exotic fruits, organic local grains, and eggs.</p>
+              <ul class="space-y-3 text-xs text-on-surface-variant font-semibold">
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>A2 Desi Cow Milk (2 Ltr Daily)</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>Organic veggies & exotic greens (3/week)</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>Fresh Eggs & Poultry (Weekly)</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>Priority customer support slot</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span>Save over ₹650/month</li>
+              </ul>
+            </div>
+            <a href="#download-section" class="mt-8 block text-center border-2 border-primary text-primary py-3 rounded-xl font-bold hover:bg-primary/5 transition-colors">
+              Subscribe Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How Freshness Works Section -->
+    <section class="py-16 md:py-28 bg-surface">
+      <div class="container mx-auto px-container-margin">
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <h2 class="font-headline-lg text-3xl md:text-4xl text-on-surface mb-4 font-bold">How Freshness Works</h2>
+          <p class="text-on-surface-variant font-medium text-sm md:text-base">We track our entire distribution pipeline by the minute to deliver health and quality.</p>
+        </div>
+
+        <!-- Timeline container -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 relative max-w-5xl mx-auto">
+          <!-- Horizontal connector line for large screens -->
+          <div class="hidden lg:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-outline-variant/30 z-0"></div>
+          
           <!-- Step 1 -->
-          <div class="relative group">
-            <div
-              class="bg-white p-8 rounded-[2rem] shadow-soft hover:shadow-md transition-all duration-300 flex flex-col items-center text-center">
-              <div
-                class="w-16 h-16 bg-[#d0f1c3] text-primary rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
-                <span class="material-symbols-outlined text-4xl" data-icon="shopping_basket">shopping_basket</span>
-              </div>
-              <h3 class="font-headline-md text-headline-md mb-3">Order</h3>
-              <p class="text-on-surface-variant text-sm">Select from our seasonal curated harvest through the app or
-                website.</p>
+          <div class="flex flex-col items-center text-center relative z-10 space-y-4">
+            <div class="w-20 h-20 bg-[#d0f1c3] text-primary rounded-[1.5rem] flex items-center justify-center shadow-md border-4 border-white">
+              <span class="material-symbols-outlined text-3xl font-semibold">agriculture</span>
+            </div>
+            <div>
+              <p class="text-xs text-primary font-bold">Step 1 • 6:00 AM</p>
+              <h4 class="font-bold text-on-surface mt-1">Harvested</h4>
+              <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Partner farmers handpick mature produce under cool morning skies.</p>
             </div>
           </div>
+
           <!-- Step 2 -->
-          <div class="relative group">
-            <div
-              class="bg-white p-8 rounded-[2rem] shadow-soft hover:shadow-md transition-all duration-300 flex flex-col items-center text-center">
-              <div
-                class="w-16 h-16 bg-[#ffdbcf] text-secondary rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
-                <span class="material-symbols-outlined text-4xl" data-icon="agriculture">agriculture</span>
-              </div>
-              <h3 class="font-headline-md text-headline-md mb-3">Farm Picks</h3>
-              <p class="text-on-surface-variant text-sm">Our partner farmers handpick the best produce specifically for
-                your order.</p>
+          <div class="flex flex-col items-center text-center relative z-10 space-y-4">
+            <div class="w-20 h-20 bg-[#ffdbcf] text-secondary rounded-[1.5rem] flex items-center justify-center shadow-md border-4 border-white">
+              <span class="material-symbols-outlined text-3xl font-semibold">fact_check</span>
+            </div>
+            <div>
+              <p class="text-xs text-secondary font-bold">Step 2 • 8:00 AM</p>
+              <h4 class="font-bold text-on-surface mt-1">Quality Checked</h4>
+              <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Produce undergo residue testing and visual checks for physical quality.</p>
             </div>
           </div>
+
           <!-- Step 3 -->
-          <div class="relative group">
-            <div
-              class="bg-white p-8 rounded-[2rem] shadow-soft hover:shadow-md transition-all duration-300 flex flex-col items-center text-center">
-              <div
-                class="w-16 h-16 bg-[#ffdcc2] text-tertiary rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
-                <span class="material-symbols-outlined text-4xl" data-icon="local_shipping">local_shipping</span>
-              </div>
-              <h3 class="font-headline-md text-headline-md mb-3">Delivered Fresh</h3>
-              <p class="text-on-surface-variant text-sm">Rapid same-day delivery ensures your produce retains its
-                soil-fresh nutrients.</p>
+          <div class="flex flex-col items-center text-center relative z-10 space-y-4">
+            <div class="w-20 h-20 bg-[#ffdcc2] text-tertiary rounded-[1.5rem] flex items-center justify-center shadow-md border-4 border-white">
+              <span class="material-symbols-outlined text-3xl font-semibold">inventory_2</span>
+            </div>
+            <div>
+              <p class="text-xs text-tertiary font-bold">Step 3 • 9:00 AM</p>
+              <h4 class="font-bold text-on-surface mt-1">Packed</h4>
+              <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Items packed in breathable eco-friendly bags based on orders.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flex flex-col items-center text-center relative z-10 space-y-4">
+            <div class="w-20 h-20 bg-[#d0f1c3] text-primary rounded-[1.5rem] flex items-center justify-center shadow-md border-4 border-white">
+              <span class="material-symbols-outlined text-3xl font-semibold">local_shipping</span>
+            </div>
+            <div>
+              <p class="text-xs text-primary font-bold">Step 4 • 10:00 AM</p>
+              <h4 class="font-bold text-on-surface mt-1">Dispatched</h4>
+              <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Placed in thermal delivery units, loaded onto electric delivery vehicles.</p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="flex flex-col items-center text-center relative z-10 space-y-4">
+            <div class="w-20 h-20 bg-primary text-on-primary rounded-[1.5rem] flex items-center justify-center shadow-md border-4 border-white">
+              <span class="material-symbols-outlined text-3xl font-semibold" style="font-variation-settings: 'FILL' 1">verified</span>
+            </div>
+            <div>
+              <p class="text-xs text-primary font-bold">Step 5 • Same Day!</p>
+              <h4 class="font-bold text-on-surface mt-1">Delivered</h4>
+              <p class="text-on-surface-variant text-xs mt-1 leading-relaxed">Arrives directly at your doorstep in under 12 hours from harvest.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Why KhetSe Section -->
-    <section class="py-stack-lg md:py-32">
+
+    <!-- Customer Testimonials -->
+    <section class="py-16 md:py-28 bg-[#f1f4e8]">
       <div class="container mx-auto px-container-margin">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-          <div class="max-w-xl">
-            <h2 class="font-headline-lg text-headline-lg md:text-5xl text-on-surface mb-4">Why KhetSe?</h2>
-            <p class="text-on-surface-variant font-body-lg">Redefining the agricultural supply chain in India with
-              transparency and quality.</p>
-          </div>
-          <a class="text-primary font-label-md flex items-center gap-1 group" href="#">
-            Learn about our mission
-            <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform"
-              data-icon="arrow_forward">arrow_forward</span>
-          </a>
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <span class="text-primary text-xs font-extrabold uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">Testimonials</span>
+          <h2 class="font-headline-lg text-3xl md:text-4xl lg:text-5xl text-on-surface mt-4 mb-4 font-bold">What Our Customers Say</h2>
+          <p class="text-on-surface-variant font-medium text-sm md:text-base">Join over 50,000+ happy households eating fresh, clean, and nutritious soil harvests.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Card 1 -->
-          <div
-            class="bg-white p-8 rounded-[2.5rem] border border-outline-variant/30 hover:border-primary/40 transition-all group shadow-sm">
-            <div class="mb-6 text-primary">
-              <span class="material-symbols-outlined text-5xl" data-icon="nature_people"
-                style="font-variation-settings: 'FILL' 1;">nature_people</span>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="bg-white p-6 rounded-[2rem] border border-outline-variant/30 flex flex-col justify-between hover-lift shadow-sm">
+            <div class="space-y-4">
+              <div class="flex text-[#8dc63f]">
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "The vegetables are fresher than anything I get locally from vendors. The okra and tomatoes look harvested just hours ago. Highly recommended!"
+              </p>
             </div>
-            <h4 class="font-headline-md text-xl mb-3">Fresh from Farm</h4>
-            <p class="text-on-surface-variant text-sm leading-relaxed">No cold storage. Produce reaches you within hours
-              of harvest.</p>
+            <div class="flex items-center gap-3 border-t border-outline-variant/20 pt-4 mt-6">
+              <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Priya Sharma" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h5 class="font-bold text-xs text-on-surface">Priya Sharma</h5>
+                <p class="text-[10px] text-on-surface-variant">Ahmedabad, Gujarat</p>
+              </div>
+            </div>
           </div>
-          <!-- Card 2 -->
-          <div
-            class="bg-white p-8 rounded-[2.5rem] border border-outline-variant/30 hover:border-primary/40 transition-all group shadow-sm">
-            <div class="mb-6 text-primary">
-              <span class="material-symbols-outlined text-5xl" data-icon="bolt"
-                style="font-variation-settings: 'FILL' 1;">bolt</span>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-white p-6 rounded-[2rem] border border-outline-variant/30 flex flex-col justify-between hover-lift shadow-sm">
+            <div class="space-y-4">
+              <div class="flex text-[#8dc63f]">
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "Country Delight and Blinkit don't offer direct-from-farmer accountability like KhetSe does. I love reading about where my daily milk and potatoes come from."
+              </p>
             </div>
-            <h4 class="font-headline-md text-xl mb-3">Same-day Delivery</h4>
-            <p class="text-on-surface-variant text-sm leading-relaxed">Place order by 10 AM and get it delivered for
-              your evening meal.</p>
+            <div class="flex items-center gap-3 border-t border-outline-variant/20 pt-4 mt-6">
+              <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Amit Patel" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h5 class="font-bold text-xs text-on-surface">Amit Patel</h5>
+                <p class="text-[10px] text-on-surface-variant">Surat, Gujarat</p>
+              </div>
+            </div>
           </div>
-          <!-- Card 3 -->
-          <div
-            class="bg-white p-8 rounded-[2.5rem] border border-outline-variant/30 hover:border-primary/40 transition-all group shadow-sm">
-            <div class="mb-6 text-primary">
-              <span class="material-symbols-outlined text-5xl" data-icon="payments"
-                style="font-variation-settings: 'FILL' 1;">payments</span>
+
+          <!-- Testimonial 3 -->
+          <div class="bg-white p-6 rounded-[2rem] border border-outline-variant/30 flex flex-col justify-between hover-lift shadow-sm">
+            <div class="space-y-4">
+              <div class="flex text-[#8dc63f]">
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "I configured the Family Subscription. Milk, bread, and greens arrive daily by 6:30 AM without fail. It has cut my weekly grocery shopping chore by 90%."
+              </p>
             </div>
-            <h4 class="font-headline-md text-xl mb-3">Better Prices</h4>
-            <p class="text-on-surface-variant text-sm leading-relaxed">Cutting out middle-men ensures better value for
-              you and farmers.</p>
+            <div class="flex items-center gap-3 border-t border-outline-variant/20 pt-4 mt-6">
+              <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Nisha Shah" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h5 class="font-bold text-xs text-on-surface">Nisha Shah</h5>
+                <p class="text-[10px] text-on-surface-variant">Vadodara, Gujarat</p>
+              </div>
+            </div>
           </div>
-          <!-- Card 4 -->
-          <div
-            class="bg-white p-8 rounded-[2.5rem] border border-outline-variant/30 hover:border-primary/40 transition-all group shadow-sm">
-            <div class="mb-6 text-primary">
-              <span class="material-symbols-outlined text-5xl" data-icon="calendar_month"
-                style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+
+          <!-- Testimonial 4 -->
+          <div class="bg-white p-6 rounded-[2rem] border border-outline-variant/30 flex flex-col justify-between hover-lift shadow-sm">
+            <div class="space-y-4">
+              <div class="flex text-[#8dc63f]">
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "Same-day delivery actually works! I ordered at 8:30 AM, and my box was at my kitchen door by 4:00 PM. Everything was chilled, crisp, and clean."
+              </p>
             </div>
-            <h4 class="font-headline-md text-xl mb-3">Subscriptions</h4>
-            <p class="text-on-surface-variant text-sm leading-relaxed">Never run out of essentials. Weekly baskets for
-              daily staples.</p>
+            <div class="flex items-center gap-3 border-t border-outline-variant/20 pt-4 mt-6">
+              <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+                <img src="https://images.unsplash.com/photo-1628157582853-a796fa650a6a?auto=format&fit=crop&w=100&q=80" alt="Raj Mehta" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h5 class="font-bold text-xs text-on-surface">Raj Mehta</h5>
+                <p class="text-[10px] text-on-surface-variant">Rajkot, Gujarat</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="bg-white p-6 rounded-[2rem] border border-outline-variant/30 flex flex-col justify-between hover-lift shadow-sm">
+            <div class="space-y-4">
+              <div class="flex text-[#8dc63f]">
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "Finding fresh, residue-free organic goods in Junagadh used to be hard. Thanks to KhetSe, local farmers deliver clean groundnuts and sweet mangoes directly."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 border-t border-outline-variant/20 pt-4 mt-6">
+              <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Meera Desai" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h5 class="font-bold text-xs text-on-surface">Meera Desai</h5>
+                <p class="text-[10px] text-on-surface-variant">Junagadh, Gujarat</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 6 -->
+          <div class="bg-white p-6 rounded-[2rem] border border-outline-variant/30 flex flex-col justify-between hover-lift shadow-sm">
+            <div class="space-y-4">
+              <div class="flex text-[#8dc63f]">
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                "The price is cheaper than local supermarkets because there are no middlemen. The organic grains feel premium and we save money. Excellent service."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 border-t border-outline-variant/20 pt-4 mt-6">
+              <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=100&q=80" alt="Ketan Vyas" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h5 class="font-bold text-xs text-on-surface">Ketan Vyas</h5>
+                <p class="text-[10px] text-on-surface-variant">Jamnagar, Gujarat</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Mobile App Showcase Section -->
-    <section id="download-section" class="py-stack-lg md:py-24 bg-surface-container overflow-hidden">
+
+    <!-- Delivery Coverage Section -->
+    <section class="py-16 md:py-28 bg-surface">
       <div class="container mx-auto px-container-margin">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div class="space-y-6">
             <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full">
-              <span class="material-symbols-outlined text-sm" data-icon="smartphone">smartphone</span>
-              <span class="text-[10px] font-label-md uppercase tracking-widest">Khetse Mobile App</span>
+              <span class="material-symbols-outlined text-sm">my_location</span>
+              <span class="text-[10px] font-bold uppercase tracking-wider">Service Coverage</span>
             </div>
-            <h2 class="font-headline-lg text-headline-lg md:text-5xl text-on-surface leading-tight">
-              Farm Fresh Goodness, <br /><span class="text-primary italic font-serif">Delivered Daily.</span>
+            <h2 class="font-headline-lg text-3xl md:text-4xl lg:text-5xl text-on-surface font-extrabold leading-tight">
+              Currently Delivering <br />Across Gujarat
             </h2>
-            <p class="text-on-surface-variant text-body-lg">
-              Experience the ultimate farm-to-home convenience with the Khetse App. Browse local harvests, manage daily
-              subscriptions, and get fresh, hygienic produce delivered straight to your doorstep in Jaipur.
+            <p class="text-on-surface-variant text-base">
+              We operate across all major city boundaries in Gujarat. Our temperature-controlled electric transit hubs ensure that farm-to-table transit remains incredibly rapid.
             </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-primary mt-1" data-icon="verified"
-                  style="font-variation-settings: 'FILL' 1;">verified</span>
-                <div>
-                  <h4 class="font-bold text-on-surface text-sm">100% Fresh & Natural</h4>
-                  <p class="text-on-surface-variant text-xs">Direct from farms within hours of harvest.</p>
-                </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4 text-sm font-bold text-on-surface">
+              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#f1f4e8] border border-outline-variant/30">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                <span>Ahmedabad</span>
               </div>
-              <div class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-primary mt-1" data-icon="groups"
-                  style="font-variation-settings: 'FILL' 1;">groups</span>
-                <div>
-                  <h4 class="font-bold text-on-surface text-sm">No Middlemen</h4>
-                  <p class="text-on-surface-variant text-xs">Ensuring fair prices for both you and farmers.</p>
-                </div>
+              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#f1f4e8] border border-outline-variant/30">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                <span>Surat</span>
               </div>
-              <div class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-primary mt-1" data-icon="local_shipping"
-                  style="font-variation-settings: 'FILL' 1;">local_shipping</span>
-                <div>
-                  <h4 class="font-bold text-on-surface text-sm">Same-day Delivery</h4>
-                  <p class="text-on-surface-variant text-xs">Delivered carefully in temperature-controlled bags.</p>
-                </div>
+              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#f1f4e8] border border-outline-variant/30">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                <span>Rajkot</span>
               </div>
-              <div class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-primary mt-1" data-icon="support_agent"
-                  style="font-variation-settings: 'FILL' 1;">support_agent</span>
-                <div>
-                  <h4 class="font-bold text-on-surface text-sm">Safe & Reliable</h4>
-                  <p class="text-on-surface-variant text-xs">Hassle-free payment and exceptional service.</p>
-                </div>
+              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#f1f4e8] border border-outline-variant/30">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                <span>Vadodara</span>
               </div>
-            </div>
-
-            <!-- Store Badges -->
-            <div class="flex flex-wrap gap-4 pt-6">
-              <a href="#" class="hover:scale-105 active:scale-95 transition-all duration-200">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                  alt="Get it on Google Play" class="h-11 shadow-md rounded-lg" />
-              </a>
-              <a href="#" class="hover:scale-105 active:scale-95 transition-all duration-200">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
-                  alt="Download on the App Store" class="h-11 shadow-md rounded-lg" />
-              </a>
+              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#f1f4e8] border border-outline-variant/30">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                <span>Junagadh</span>
+              </div>
+              <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#f1f4e8] border border-outline-variant/30">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                <span>Jamnagar</span>
+              </div>
             </div>
           </div>
 
-          <!-- Image Mockup Side -->
-          <div class="relative flex justify-center w-full">
-            <div class="relative max-w-lg w-full aspect-square rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white bg-white group hover:shadow-primary/10 transition-all duration-500">
-              <img src="/app_showcase.png" alt="Khetse App Mockup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80 pointer-events-none"></div>
-            </div>
-            
-            <!-- Floating App Badge decoration -->
-            <div class="absolute bottom-4 right-4 sm:-bottom-6 sm:-right-4 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl flex items-center gap-3 shadow-xl border border-outline-variant/30 transition-all">
-              <div class="w-10 h-10 rounded-full bg-[#d0f1c3] flex items-center justify-center text-primary">
-                <span class="material-symbols-outlined text-xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+          <!-- Interactive map illustration side -->
+          <div class="relative flex justify-center">
+            <div class="w-full max-w-md bg-[#f8faef] aspect-[4/3] rounded-[2.5rem] border border-outline-variant/30 shadow-inner flex items-center justify-center p-8 relative overflow-hidden">
+              <div class="absolute inset-0 bg-[radial-gradient(#c3c8bc_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+              
+              <!-- Styled SVG representation of a map nodes graph -->
+              <svg class="w-full h-full text-primary" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Connective paths -->
+                <path d="M100 150 L200 80 L300 120 L250 220 L150 240 L100 150" stroke="currentColor" stroke-width="2" stroke-dasharray="6 6" class="opacity-40" />
+                <path d="M200 80 L250 220" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" class="opacity-30" />
+                <path d="M100 150 L300 120" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" class="opacity-30" />
+
+                <!-- Nodes -->
+                <!-- Ahmedabad -->
+                <circle cx="200" cy="80" r="14" fill="#1a5319" class="opacity-10" />
+                <circle cx="200" cy="80" r="6" fill="#1a5319" />
+                <!-- Vadodara -->
+                <circle cx="300" cy="120" r="14" fill="#1a5319" class="opacity-10" />
+                <circle cx="300" cy="120" r="6" fill="#1a5319" />
+                <!-- Surat -->
+                <circle cx="250" cy="220" r="14" fill="#1a5319" class="opacity-10" />
+                <circle cx="250" cy="220" r="6" fill="#1a5319" />
+                <!-- Rajkot -->
+                <circle cx="100" cy="150" r="14" fill="#1a5319" class="opacity-10" />
+                <circle cx="100" cy="150" r="6" fill="#1a5319" />
+                <!-- Junagadh -->
+                <circle cx="150" cy="240" r="14" fill="#1a5319" class="opacity-10" />
+                <circle cx="150" cy="240" r="6" fill="#1a5319" />
+              </svg>
+              
+              <!-- Floating label mockup -->
+              <div class="absolute top-10 left-10 bg-white p-3 rounded-2xl shadow-md border border-outline-variant/30 flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-primary animate-ping"></span>
+                <div>
+                  <p class="font-extrabold text-[10px] text-on-surface">Ahmedabad Hub</p>
+                  <p class="text-[8px] text-on-surface-variant">Avg Delivery: 8.5 Hours</p>
+                </div>
               </div>
-              <div>
-                <p class="font-bold text-xs text-on-surface">4.9 Star Rating</p>
-                <p class="text-[10px] text-on-surface-variant">Over 10k reviews</p>
+
+              <!-- Floating label mockup 2 -->
+              <div class="absolute bottom-12 right-10 bg-white p-3 rounded-2xl shadow-md border border-outline-variant/30 flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-primary animate-ping"></span>
+                <div>
+                  <p class="font-extrabold text-[10px] text-on-surface">Surat Transit</p>
+                  <p class="text-[8px] text-on-surface-variant">Freshness: 100%</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- CTA Section -->
-    <section class="px-container-margin py-stack-lg">
-      <div class="container mx-auto max-w-6xl">
-        <div class="relative bg-primary overflow-hidden rounded-[3.5rem] p-12 md:p-24 text-center">
-          <div class="relative z-10">
-            <h2 class="font-display-lg text-4xl md:text-6xl text-on-primary mb-8">Download the app today</h2>
-            <p class="text-on-primary/90 text-body-lg max-w-2xl mx-auto mb-12">Join over 50,000+ happy households
-              enjoying the true taste of fresh Indian soil, delivered right to their doorstep.</p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button
-                class="bg-white text-primary px-12 py-4 rounded-2xl font-label-md hover:bg-surface-container transition-all active:scale-95 flex items-center gap-2 shadow-xl">
-                <span class="material-symbols-outlined" data-icon="download">download</span>
-                Download App
-              </button>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-28 bg-[#f8faef]">
+      <div class="container mx-auto px-container-margin max-w-4xl">
+        <div class="text-center mb-16">
+          <span class="text-primary text-xs font-extrabold uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">Support</span>
+          <h2 class="font-headline-lg text-3xl md:text-4xl text-on-surface mt-4 mb-4 font-bold">Frequently Asked Questions</h2>
+          <p class="text-on-surface-variant font-medium">Have queries? Find answers to commonly asked questions about KhetSe.</p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Q1 -->
+          <div class="faq-item bg-white rounded-3xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+            <button class="faq-question w-full p-6 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition-colors">
+              <span>1. How fresh are KhetSe products?</span>
+              <span class="faq-icon material-symbols-outlined text-primary font-bold transition-transform">add</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-on-surface-variant border-t border-outline-variant/20 pt-4 leading-relaxed">
+              Extremely fresh! Our partners harvest vegetables and fruits early in the morning starting at 4:00 AM. They are sorted, quality tested, and dispatched to your home in under 12 hours from harvest.
             </div>
           </div>
-          <!-- Background decoration -->
-          <div
-            class="absolute -top-12 -left-12 w-64 h-64 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl opacity-30">
+
+          <!-- Q2 -->
+          <div class="faq-item bg-white rounded-3xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+            <button class="faq-question w-full p-6 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition-colors">
+              <span>2. Do you offer same-day delivery?</span>
+              <span class="faq-icon material-symbols-outlined text-primary font-bold transition-transform">add</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-on-surface-variant border-t border-outline-variant/20 pt-4 leading-relaxed">
+              Yes. If you place your order before 10:00 AM, our electric vehicle transit fleet delivers fresh staples to your kitchen step before dinner time.
+            </div>
           </div>
-          <div
-            class="absolute -bottom-12 -right-12 w-64 h-64 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl opacity-30">
+
+          <!-- Q3 -->
+          <div class="faq-item bg-white rounded-3xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+            <button class="faq-question w-full p-6 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition-colors">
+              <span>3. Is cash on delivery (COD) available?</span>
+              <span class="faq-icon material-symbols-outlined text-primary font-bold transition-transform">add</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-on-surface-variant border-t border-outline-variant/20 pt-4 leading-relaxed">
+              Yes, cash on delivery is fully supported on the KhetSe App, alongside UPI, Net Banking, and Debit/Credit cards.
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="faq-item bg-white rounded-3xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+            <button class="faq-question w-full p-6 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition-colors">
+              <span>4. Which cities are covered?</span>
+              <span class="faq-icon material-symbols-outlined text-primary font-bold transition-transform">add</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-on-surface-variant border-t border-outline-variant/20 pt-4 leading-relaxed">
+              We currently service Ahmedabad, Surat, Rajkot, Vadodara, Junagadh, and Jamnagar in Gujarat. We will soon expand to other neighboring regions.
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="faq-item bg-white rounded-3xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+            <button class="faq-question w-full p-6 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition-colors">
+              <span>5. What if I receive damaged or bad products?</span>
+              <span class="faq-icon material-symbols-outlined text-primary font-bold transition-transform">add</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-on-surface-variant border-t border-outline-variant/20 pt-4 leading-relaxed">
+              We maintain a strict zero-questions-asked refund policy. If you receive bruised or unsatisfactory produce, simply request a refund inside the KhetSe App to receive instant wallet credits.
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="faq-item bg-white rounded-3xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+            <button class="faq-question w-full p-6 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition-colors">
+              <span>6. Can I pause my subscription plans?</span>
+              <span class="faq-icon material-symbols-outlined text-primary font-bold transition-transform">add</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-on-surface-variant border-t border-outline-variant/20 pt-4 leading-relaxed">
+              Absolutely. Pausing or adjusting your subscription deliveries is easy. You can change schedules, pause, or resume anytime inside the App settings.
+            </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="faq-item bg-white rounded-3xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+            <button class="faq-question w-full p-6 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition-colors">
+              <span>7. How are KhetSe partner farmers selected?</span>
+              <span class="faq-icon material-symbols-outlined text-primary font-bold transition-transform">add</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-on-surface-variant border-t border-outline-variant/20 pt-4 leading-relaxed">
+              We evaluate local growers based on soil tests, chemical usage guidelines, and ethical practices. Selected farmers undergo organic training to guarantee crop purity.
+            </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="faq-item bg-white rounded-3xl border border-outline-variant/30 overflow-hidden transition-all duration-300">
+            <button class="faq-question w-full p-6 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition-colors">
+              <span>8. Is certified organic produce available?</span>
+              <span class="faq-icon material-symbols-outlined text-primary font-bold transition-transform">add</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-on-surface-variant border-t border-outline-variant/20 pt-4 leading-relaxed">
+              Yes. Our "Organic Products" category features certified chemical-free and bio-fertilized items grown under strict supervision.
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Blog / Knowledge Section -->
+    <section class="py-16 md:py-28 bg-surface">
+      <div class="container mx-auto px-container-margin">
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <span class="text-primary text-xs font-extrabold uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">Knowledge Hub</span>
+          <h2 class="font-headline-lg text-3xl md:text-4xl text-on-surface mt-4 mb-4 font-bold">From Farm To Table</h2>
+          <p class="text-on-surface-variant font-medium">Read nutritional tips, farmer diaries, and sustainable kitchen guidelines.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Article 1 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="aspect-video w-full rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&w=400&q=80" alt="Seasonal Fruits Guide" class="w-full h-full object-cover" />
+              </div>
+              <p class="text-primary text-[10px] font-bold uppercase tracking-wider">Nutrition Guide</p>
+              <h4 class="font-bold text-on-surface text-base leading-snug">The Ultimate Guide to India's Seasonal Fruits</h4>
+              <p class="text-on-surface-variant text-xs leading-relaxed">Discover why eating seasonal local fruits maximizes organic enzyme absorption and boosts immune thresholds.</p>
+            </div>
+            <a href="#" class="text-primary font-bold text-xs flex items-center gap-1 mt-6 group">
+              Read Article <span class="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="aspect-video w-full rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=400&q=80" alt="Organic Farming Practices" class="w-full h-full object-cover" />
+              </div>
+              <p class="text-primary text-[10px] font-bold uppercase tracking-wider">Farming Practices</p>
+              <h4 class="font-bold text-on-surface text-base leading-snug">Understanding Zero-Budget Natural Farming</h4>
+              <p class="text-on-surface-variant text-xs leading-relaxed">How local Gujarat smallholders employ bio-dynamic methods to nurture native topsoil fertility.</p>
+            </div>
+            <a href="#" class="text-primary font-bold text-xs flex items-center gap-1 mt-6 group">
+              Read Article <span class="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="aspect-video w-full rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=400&q=80" alt="Healthy Eating Tips" class="w-full h-full object-cover" />
+              </div>
+              <p class="text-primary text-[10px] font-bold uppercase tracking-wider">Healthy Eating</p>
+              <h4 class="font-bold text-on-surface text-base leading-snug">5 Ways Fresh Raw Veggies Improve Gut Flora</h4>
+              <p class="text-on-surface-variant text-xs leading-relaxed">Gut health researchers detail the dietary advantages of eating pesticide-free, harvest-day produce.</p>
+            </div>
+            <a href="#" class="text-primary font-bold text-xs flex items-center gap-1 mt-6 group">
+              Read Article <span class="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Article 4 -->
+          <div class="bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden hover-lift p-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="aspect-video w-full rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=400&q=80" alt="Farmer Stories" class="w-full h-full object-cover" />
+              </div>
+              <p class="text-primary text-[10px] font-bold uppercase tracking-wider">Farmer Diaries</p>
+              <h4 class="font-bold text-on-surface text-base leading-snug">How Digital Markets Saved Rajesh's Harvest</h4>
+              <p class="text-on-surface-variant text-xs leading-relaxed">A detailed account of Rajesh Patel's transition from mandi agents to modern transparent digital marketplaces.</p>
+            </div>
+            <a href="#" class="text-primary font-bold text-xs flex items-center gap-1 mt-6 group">
+              Read Article <span class="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download App Section Improvements -->
+    <section id="download-section" class="px-container-margin py-16 bg-surface-container-low">
+      <div class="container mx-auto max-w-5xl bg-primary text-on-primary rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-xl">
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <h2 class="font-display-lg text-3xl md:text-5xl font-extrabold leading-tight">Download the KhetSe App Today</h2>
+            <p class="text-on-primary/90 text-sm md:text-base leading-relaxed max-w-xl">
+              Get 10% discount on your first order. Download and configure weekly delivery schedules. Kyunki sehat aur bharosa, dono zaroori hain.
+            </p>
+            
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a href="#" class="hover:scale-105 active:scale-95 transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="h-12 shadow-lg rounded-xl border border-white/20" />
+              </a>
+              <a href="#" class="hover:scale-105 active:scale-95 transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" class="h-12 shadow-lg rounded-xl border border-white/20" />
+              </a>
+            </div>
+
+            <!-- Stats info -->
+            <div class="flex items-center gap-6 pt-6 border-t border-white/10 mt-6">
+              <div>
+                <p class="text-lg md:text-2xl font-extrabold text-[#8dc63f]">4.9 ★</p>
+                <p class="text-[9px] uppercase tracking-wider text-white/70 font-bold">App Store Rating</p>
+              </div>
+              <div class="h-8 w-px bg-white/20"></div>
+              <div>
+                <p class="text-lg md:text-2xl font-extrabold text-[#8dc63f]">100K+</p>
+                <p class="text-[9px] uppercase tracking-wider text-white/70 font-bold">App Downloads</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right QR code and Phone Screenshot collage -->
+          <div class="lg:col-span-5 flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div class="bg-white p-4 rounded-3xl shadow-xl w-36 aspect-square flex flex-col items-center justify-center border-4 border-[#8dc63f] select-none shrink-0">
+              <!-- Inline mock SVG QR Code -->
+              <svg class="w-full h-full text-slate-900" viewBox="0 0 100 100" fill="currentColor">
+                <path d="M5 5h30v30H5V5zm5 5v20h20V10H10zM5 65h30v30H5V65zm5 5v20h20V70H10zM65 5h30v30H65V5zm5 5v20h20V10H70z" />
+                <path d="M50 15h5v5h-5zm0 15h5v5h-5zm15 35h5v5h-5zm0 15h5v5h-5zM50 50h5v5h-5zm15 0h5v5h-5zm15 15h5v5h-5zM35 50h5v5h-5zm0 15h5v5h-5zM80 80h5v5h-5zm-15 0h5v5h-5zm15-15h5v5h-5z" />
+                <path d="M15 15h10v10H15V15zm0 60h10v10H15V75zm60-60h10v10H75V15z" />
+              </svg>
+              <p class="text-[8px] text-slate-800 font-extrabold uppercase mt-2 tracking-wider text-center">Scan to download</p>
+            </div>
+            
+            <div class="w-36 h-[220px] bg-slate-900 rounded-[2rem] p-1.5 shadow-2xl border-2 border-slate-800 shrink-0 hidden sm:block relative overflow-hidden">
+              <img src="/app_showcase.png" class="w-full h-full object-cover rounded-[1.8rem] opacity-90" alt="App preview screenshot" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Background decorations -->
+        <div class="absolute -top-12 -left-12 w-64 h-64 bg-white/10 rounded-full filter blur-3xl opacity-30 pointer-events-none"></div>
+        <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-white/10 rounded-full filter blur-3xl opacity-30 pointer-events-none"></div>
       </div>
     </section>
   </main>
+
   <!-- Bottom Tagline Banner -->
   <div class="bg-[#143f13] text-white py-4 px-4 flex justify-center items-center gap-2 relative z-20">
     <span class="material-symbols-outlined text-lg text-[#8dc63f] shrink-0" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
     <span class="text-xs sm:text-sm md:text-base font-semibold tracking-wide text-center">Khetse – Kyunki sehat aur bharosa, dono zaroori hain.</span>
     <span class="material-symbols-outlined text-lg text-red-500 animate-pulse shrink-0" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
   </div>
+
   <!-- Footer -->
-  <footer class="bg-white pt-20 pb-24 md:pb-12 border-t border-outline-variant/20">
+  <footer id="about" class="bg-white pt-20 pb-24 md:pb-12 border-t border-outline-variant/20">
     <div class="container mx-auto px-container-margin">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-        <div class="col-span-1 md:col-span-1">
-          <div class="flex items-center mb-6">
-            <img alt="KhetSe" class="h-8 object-contain" src="/logo.png" />
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+        <!-- Logo and info -->
+        <div class="md:col-span-4 space-y-6">
+          <div class="flex items-center">
+            <img alt="KhetSe Logo" class="h-10 object-contain" src="/logo.png" />
           </div>
-          <p class="text-on-surface-variant text-sm mb-6">Bringing the vitality of Indian farms to urban homes, one
-            harvest at a time.</p>
+          <p class="text-on-surface-variant text-sm leading-relaxed max-w-sm">
+            Bringing the vitality of Indian farms to urban homes, one harvest at a time. Empowering growers, promoting healthy diets.
+          </p>
           <div class="flex gap-4">
-            <a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all"
-              href="#">
+            <a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm" href="#" aria-label="Instagram">
               <span class="material-symbols-outlined text-xl" data-icon="share">share</span>
             </a>
-            <a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all"
-              href="#">
+            <a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm" href="#" aria-label="Facebook">
               <span class="material-symbols-outlined text-xl" data-icon="groups">groups</span>
             </a>
           </div>
         </div>
-        <div>
-          <h5 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Company</h5>
-          <ul class="space-y-4 text-sm text-on-surface-variant">
+        
+        <!-- Company links -->
+        <div class="md:col-span-2">
+          <h5 class="font-bold text-on-surface mb-6 uppercase tracking-wider text-xs">Company</h5>
+          <ul class="space-y-4 text-sm font-medium text-on-surface-variant">
             <li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
-            <li><a class="hover:text-primary transition-colors" href="#">Our Farmers</a></li>
-            <li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#farmers">Our Farmers</a></li>
             <li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
           </ul>
         </div>
-        <div>
-          <h5 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Support</h5>
-          <ul class="space-y-4 text-sm text-on-surface-variant">
+
+        <!-- Support links -->
+        <div class="md:col-span-2">
+          <h5 class="font-bold text-on-surface mb-6 uppercase tracking-wider text-xs">Support</h5>
+          <ul class="space-y-4 text-sm font-medium text-on-surface-variant">
             <li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
             <li><a class="hover:text-primary transition-colors" href="#">Delivery Areas</a></li>
             <li><a class="hover:text-primary transition-colors" href="#">Refund Policy</a></li>
             <li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
           </ul>
         </div>
-        <div>
-          <h5 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Stay Updated</h5>
-          <p class="text-xs text-on-surface-variant mb-4">Farm-fresh updates and seasonal recipes.</p>
-          <div class="flex">
-            <input
-              class="bg-surface-container-low border-outline-variant/50 rounded-l-2xl w-full text-sm focus:ring-primary focus:border-primary px-4 py-3"
-              placeholder="Your email" type="email" />
-            <button class="bg-primary text-on-primary px-5 rounded-r-2xl">
-              <span class="material-symbols-outlined" data-icon="send">send</span>
-            </button>
+
+        <!-- Contact details -->
+        <div id="contact" class="md:col-span-4 space-y-4">
+          <h5 class="font-bold text-on-surface mb-6 uppercase tracking-wider text-xs">Contact Us</h5>
+          <ul class="space-y-3 text-sm font-medium text-on-surface-variant">
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-lg">mail</span>
+              <a href="mailto:support@khetse.com" class="hover:text-primary transition-colors">support@khetse.com</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-lg">call</span>
+              <a href="tel:+919876543210" class="hover:text-primary transition-colors">+91 98765 43210</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-lg">forum</span>
+              <a href="https://wa.me/919876543210" class="hover:text-primary transition-colors">WhatsApp Support Chat</a>
+            </li>
+          </ul>
+          <!-- Email Newsletter -->
+          <div class="pt-4 space-y-2">
+            <p class="text-xs text-on-surface-variant">Sign up for fresh updates and farm recipes.</p>
+            <div class="flex">
+              <input
+                class="bg-surface-container-low border border-outline-variant/50 rounded-l-2xl w-full text-sm focus:ring-primary focus:border-primary px-4 py-3"
+                placeholder="Your email" type="email" aria-label="Your email" />
+              <button class="bg-primary text-on-primary px-5 rounded-r-2xl active:scale-95 transition-all flex items-center justify-center">
+                <span class="material-symbols-outlined" data-icon="send">send</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div
-        class="pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-on-surface-variant font-medium">
-        <p>© 2026 KhetSe Agrotech Pvt Ltd. Kyunki sehat aur bharosa, dono zaroori hain. | Made with ❤️ by Bharat Dhuva
-        </p>
+      
+      <!-- Copyright bottom -->
+      <div class="pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">
+        <p>© 2026 KhetSe Agrotech Pvt Ltd. | Made with ❤️ by Bharat Dhuva</p>
         <div class="flex gap-6">
           <a class="hover:text-primary" href="#">Privacy Policy</a>
           <a class="hover:text-primary" href="#">Terms of Service</a>
+          <a class="hover:text-primary" href="#">Cookie Policy</a>
         </div>
       </div>
     </div>
   </footer>
-  <!-- Bottom Navigation Bar (Mobile Only) -->
-  <div
-    class="md:hidden fixed bottom-0 w-full z-50 bg-white/95 backdrop-blur-lg border-t border-outline-variant/30 flex justify-around items-center h-16 pb-safe px-4">
-    <a class="flex flex-col items-center justify-center text-primary" href="#">
-      <span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
-      <span class="font-label-md text-[10px]">Home</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
-      <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
-      <span class="font-label-md text-[10px]">Categories</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-on-surface-variant relative" href="#">
-      <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
-      <span
-        class="absolute -top-1 -right-1 bg-primary text-on-primary text-[8px] w-4 h-4 flex items-center justify-center rounded-full">2</span>
-      <span class="font-label-md text-[10px]">Cart</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
-      <span class="material-symbols-outlined" data-icon="person">person</span>
-      <span class="font-label-md text-[10px]">Profile</span>
+
+  <!-- Floating Sticky CTA Bar (Shows up on Scroll) -->
+  <div id="sticky-cta-bar" class="fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-outline-variant/30 px-6 py-4 flex items-center justify-between transition-transform duration-300 transform translate-y-full md:hidden">
+    <div class="flex items-center gap-2">
+      <img src="/logo.png" class="h-8 object-contain" alt="Khetse Logo icon" />
+      <div>
+        <p class="text-xs font-bold text-on-surface">Get KhetSe App</p>
+        <p class="text-[9px] text-on-surface-variant font-medium">Kyunki sehat aur bharosa, dono zaroori hain.</p>
+      </div>
+    </div>
+    <a href="#download-section" class="bg-primary text-on-primary px-5 py-2.5 rounded-full text-xs font-bold shadow-md">
+      Download App
     </a>
   </div>
+
+  <!-- Floating WhatsApp Chat Widget -->
+  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="fixed bottom-20 md:bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300" aria-label="Chat on WhatsApp">
+    <!-- Mocking WA SVG Icon -->
+    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.054L2 22l5.077-1.33a9.923 9.923 0 004.93 1.314h.005c5.507 0 9.99-4.479 9.99-9.986.002-2.667-1.036-5.176-2.924-7.067C17.19 3.036 14.685 2 12.012 2zm5.727 14.072c-.244.693-1.42 1.274-1.947 1.34-.476.06-1.097.078-1.745-.126-2.73-.865-4.806-3.626-6.07-5.424-.078-.112-.136-.197-.184-.27-.238-.358-.887-1.334-.887-2.535 0-1.15.58-1.722.845-1.99.24-.244.646-.358.91-.358.115 0 .222.003.313.007.262.01.408.026.543.348.163.386.56 1.36.61 1.46.046.1.077.218.01.348-.06.13-.1.218-.2.328-.1.11-.21.246-.3.355-.1.11-.205.23-.087.433.118.2.525.865.753 1.258.423.73.782 1.15 1.18 1.488.243.208.47.284.664.218.232-.08.626-.644.757-.86.113-.186.27-.19.432-.13.163.06 1.03.486 1.206.574.177.088.295.132.339.208.044.078.044.453-.2.1.z" />
+    </svg>
+  </a>
+
+  <!-- Exit Intent Discount Popup Dialog -->
+  <div id="exit-popup" class="fixed inset-0 z-[100] bg-black/60 items-center justify-center px-4 hidden transition-opacity">
+    <div class="bg-white rounded-[3rem] p-8 max-w-md w-full relative border-4 border-[#8dc63f] shadow-2xl text-center space-y-6 animate-float-1">
+      <button id="close-exit-popup" class="absolute top-5 right-5 text-on-surface-variant hover:bg-surface-container rounded-full p-1 transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      
+      <span class="material-symbols-outlined text-6xl text-primary animate-pulse-soft" style="font-variation-settings: 'FILL' 1;">eco</span>
+      
+      <div class="space-y-2">
+        <h3 class="text-2xl font-extrabold text-on-surface leading-tight">Wait! Don't Miss Out on Freshness!</h3>
+        <p class="text-on-surface-variant text-sm">Download the KhetSe app right now and get <strong class="text-primary">10% Off your first order</strong> of harvest-fresh veggies.</p>
+      </div>
+
+      <div class="bg-[#ffdcc2] p-4 rounded-2xl select-all cursor-pointer border border-[#2e1500]/10">
+        <p class="text-[10px] font-bold text-[#2e1500] uppercase tracking-widest">Your Discount Code</p>
+        <p class="font-mono text-2xl font-extrabold text-[#2e1500] mt-1">FIRST10</p>
+      </div>
+
+      <div class="space-y-3 pt-2">
+        <button id="claim-offer-btn" class="w-full bg-primary text-on-primary py-4 rounded-2xl font-bold hover:bg-primary-container transition-all active:scale-95 shadow-md shadow-primary/20">
+          Claim My 10% Discount
+        </button>
+        <p class="text-[10px] text-on-surface-variant font-medium">Valid for first-time customers only.</p>
+      </div>
+    </div>
+  </div>
+
   <script type="module" src="/src/main.js"></script>
 </body>
 

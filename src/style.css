@@ -56,3 +56,53 @@
   background-image: radial-gradient(circle at 100% 0%, #d0f1c3 0%, transparent 25%),
                     radial-gradient(circle at 0% 100%, #f1f4e8 0%, transparent 25%);
 }
+
+/* Redesign Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+}
+
+@keyframes float-slow-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(12px) rotate(-4deg); }
+}
+
+.animate-float-1 {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-slow-reverse 8s ease-in-out infinite;
+}
+
+/* Premium Card Lifts */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -10px rgba(26, 83, 25, 0.12);
+  border-color: rgba(26, 83, 25, 0.2);
+}
+
+/* App Screens Transition */
+.screen-fade {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll Hide */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
